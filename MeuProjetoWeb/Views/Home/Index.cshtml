@@ -1,0 +1,92 @@
+﻿@model IEnumerable<MeuProjetoWeb.Models.PessoaJurFisViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<br />
+<br />
+
+<p>
+    @Html.ActionLink("Nova Pessoa", "Create")
+</p>
+
+<br />
+
+<table class="table">
+    <tr>
+        <th>
+        </th>
+        <th>
+            @Html.DisplayName("TIPO PESSOA")
+        </th>
+        <th>
+            @Html.DisplayName("CPF/CNPJ")
+        </th>
+        <th>
+            @Html.DisplayName("NOME")
+        </th>
+        <th>
+            @Html.DisplayName("CEP")
+        </th>
+        <th>
+            @Html.DisplayName("LOGRADOURO")
+        </th>
+        <th>
+            @Html.DisplayName("Nº")
+        </th>
+        <th>
+            @Html.DisplayName("BAIRRO")
+        </th>
+        <th>
+            @Html.DisplayName("CIDADE")
+        </th>
+        <th>
+            @Html.DisplayName("UF")
+        </th>
+        <th></th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.HiddenFor(modelItem => item.id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tipoPessoa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cpfCnpj)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cep)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.logradouro)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.numero)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.bairro)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cidade)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.uf)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id = item.id, tipoPessoa = item.tipoPessoa })            
+        </td>
+        <td>
+            @Html.ActionLink("Excluir", "Delete", new { id = item.id, tipoPessoa = item.tipoPessoa })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,293 @@
+﻿@model MeuProjetoWeb.Models.PessoaJurFisViewModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <br />
+        <br />
+        <br />
+
+        <div class="form-group">
+            @Html.Label("Tipo Pessoa", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(x => x.tipoPessoa, new SelectList(ViewBag.TipoPessoa, "Value", "Text"), new { @class = "form-control tipoPessoa" })
+            </div>
+        </div>
+
+        <div class="pessoaFisica hide">
+            <h4>Pessoa Física</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.PessoaFisica.cpf, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.PessoaFisica.cpf, new { @class = "form-control cnpjCpf" })
+                    @Html.ValidationMessageFor(model => model.PessoaFisica.cpf, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.PessoaFisica.dataNascimento, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.PessoaFisica.dataNascimento, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.PessoaFisica.dataNascimento, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.nome, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.PessoaFisica.nome, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.PessoaFisica.nome, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.PessoaFisica.sobreNome, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.PessoaFisica.sobreNome, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.PessoaFisica.sobreNome, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+        </div>
+
+        <div class="pessoaJuridica hide">
+            <h4>Pessoa Jurídica</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.PessoaJuridica.cnpj, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.PessoaJuridica.cnpj, new { @class = "form-control cnpjCpf" })
+                    @Html.ValidationMessageFor(model => model.PessoaJuridica.cnpj, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.PessoaJuridica.nomeFantasia, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.PessoaJuridica.nomeFantasia, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.PessoaJuridica.nomeFantasia, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.PessoaJuridica.razaoSocial, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.PessoaJuridica.razaoSocial, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.PessoaJuridica.razaoSocial, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+        </div>
+
+        <div class="endereco">
+            <h4>Endereço</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Endereco.cep, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Endereco.cep, new { htmlAttributes = new { @class = "form-control cep" } })
+                    @Html.ValidationMessageFor(model => model.Endereco.cep, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Endereco.bairro, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Endereco.bairro, new { htmlAttributes = new { @class = "form-control bairro" } })
+                    @Html.ValidationMessageFor(model => model.Endereco.bairro, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Endereco.cidade, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Endereco.cidade, new { htmlAttributes = new { @class = "form-control cidade" } })
+                    @Html.ValidationMessageFor(model => model.Endereco.cidade, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Endereco.logradouro, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Endereco.logradouro, new { htmlAttributes = new { @class = "form-control logradouro" } })
+                    @Html.ValidationMessageFor(model => model.Endereco.logradouro, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Endereco.numero, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Endereco.numero, new { htmlAttributes = new { @class = "form-control numero" } })
+                    @Html.ValidationMessageFor(model => model.Endereco.numero, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Endereco.complemento, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Endereco.complemento, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Endereco.complemento, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Endereco.uf, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Endereco.uf, new { htmlAttributes = new { @class = "form-control uf" } })
+                    @Html.ValidationMessageFor(model => model.Endereco.uf, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+        </div>
+
+        <div class="form-group btnSalvar hide">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Salvar" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Voltar", "Index")
+</div>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")
+
+
+<script>
+
+    $(document).ready(function () {     
+        $("#Endereco_cep").mask('99999-999', { reverse: true });
+    });
+
+    $("#PessoaFisica_dataNascimento").change(function () {
+
+        validadata();
+
+    });
+
+    function validadata() {
+        var data = document.getElementById("PessoaFisica_dataNascimento").value; // pega o valor do input
+        data = data.replace(/\//g, "-"); // substitui eventuais barras (ex. IE) "/" por hífen "-"
+        var data_array = data.split("-"); // quebra a data em array
+
+        // para o IE onde será inserido no formato dd/MM/yyyy
+        if (data_array[0].length != 4) {
+            data = data_array[2] + "-" + data_array[1] + "-" + data_array[0]; // remonto a data no formato yyyy/MM/dd
+        };
+
+        // comparo as datas e calculo a idade
+        var hoje = new Date();
+        var nasc = new Date(data);
+        var idade = hoje.getFullYear() - nasc.getFullYear();
+        var m = hoje.getMonth() - nasc.getMonth();
+        if (m < 0 || (m === 0 && hoje.getDate() < nasc.getDate())) idade--;
+
+        if (idade < 18) {
+            alert("Pessoas menores de 18 não podem se cadastrar.");
+            $('.btnSalvar').addClass("hide");
+            return false;
+        }
+
+        $('.btnSalvar').removeClass("hide");
+    };
+
+    $("#tipoPessoa").change(function () {
+
+        var tipoPessoaSelecionada = $('.tipoPessoa :selected').val();
+
+        if (Number(tipoPessoaSelecionada) == 1) {
+            $('.pessoaFisica').removeClass("hide");
+            $('.pessoaJuridica').addClass("hide");
+            $('.btnSalvar').removeClass("hide");
+
+            $("#PessoaFisica_cpf").mask('000.000.000-00', { reverse: true });
+            $("#PessoaFisica_dataNascimento").mask('99/99/9999', { reverse: true });
+
+        };
+
+        if (Number(tipoPessoaSelecionada) == 2) {
+            $('.pessoaJuridica').removeClass("hide");
+            $('.pessoaFisica').addClass("hide");
+            $('.btnSalvar').removeClass("hide");
+
+            $("#PessoaJuridica_cnpj").mask("99.999.999/9999-99", { reverse: true });
+        };
+    });
+
+    //Quando o campo cep perde o foco.
+    $(".cep").blur(function () {
+
+        //Nova variável "cep" somente com dígitos.
+        var cep = $(this).val().replace(/\D/g, '');
+
+        //Verifica se campo cep possui valor informado.
+        if (cep != "") {
+
+            //Expressão regular para validar o CEP.
+            var validacep = /^[0-9]{8}$/;
+
+            //Valida o formato do CEP.
+            if (validacep.test(cep)) {
+
+                //Preenche os campos com "..." enquanto consulta webservice.
+                $("#Endereco_bairro").val("...");
+                $("#Endereco_cidade").val("...");
+                $("#Endereco_logradouro").val("...");
+                $("#Endereco_numero").val("");
+                $("#Endereco_uf").val("...");
+
+                //Consulta o webservice viacep.com.br/
+                $.getJSON("https://viacep.com.br/ws/" + cep + "/json/?callback=?", function (dados) {
+
+                    if (!("erro" in dados)) {
+                        //Atualiza os campos com os valores da consulta.
+                        $("#Endereco_bairro").val(dados.bairro);
+                        $("#Endereco_cidade").val(dados.localidade);
+                        $("#Endereco_logradouro").val(dados.logradouro);
+                        $("#Endereco_numero").val("");
+                        $("#Endereco_uf").val(dados.uf);
+                    } //end if.
+                    else {
+                        //CEP pesquisado não foi encontrado.
+                        limpa_formulário_cep();
+                        alert("CEP não encontrado.");
+                    }
+                });
+            } //end if.
+            else {
+                //cep é inválido.
+                limpa_formulário_cep();
+                alert("Formato de CEP inválido.");
+            }
+        } //end if.
+        else {
+            //cep sem valor, limpa formulário.
+            limpa_formulário_cep();
+        }
+    });
+
+    function limpa_formulário_cep() {
+        $("#Endereco_cep").val("");
+        $("#Endereco_bairro").val("");
+        $("#Endereco_cidade").val("");
+        $("#Endereco_logradouro").val("");
+        $("#Endereco_numero").val("");
+        $("#Endereco_uf").val("");
+    };
+
+</script>
